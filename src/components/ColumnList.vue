@@ -6,7 +6,7 @@
                     <img :src="column.avatar" :alt="column.title" class=" border border-light mb-2">
                     <h5 class="card-title">{{column.title}}</h5>
                     <p class="card-text text-left">{{column.description}}</p>
-                    <a href="#" class="btn btn-outline-primary">Enter zzcolumn.</a>
+                    <router-link :to="`/column/${column.id}`" class="btn btn-outline-primary">Enter column.</router-link>
                 </div>
             </div>
         </div>
