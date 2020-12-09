@@ -18,32 +18,23 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+import { computed, defineComponent, reactive, ref } from 'vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import ColumnList, { ColumnProps } from '@/components/ColumnList.vue'
+import {useStore} from 'vuex'
 import Header, { UserProps } from './components/Header.vue'
-import ValidateInput, { RulesProp } from './components/ValidateInput.vue'
-import ValidateForm from './components/ValidateForm.vue'
+import { GlobalDataProps } from './store'
 
-const currentUser: UserProps = {
-  isLogin: true,
-  // isLogin: false
-  name: 'yinlei'
-}
 
 export default defineComponent({
   name: 'App',
   components: {
-    // ColumnList,
     Header,
-    ValidateInput,
-    ValidateForm,
   },
   setup() {
-    const inputRef = ref<any>()
+    const store = useStore<GlobalDataProps>()
+    const currentUser = computed(() => store.state.user)
     return {
       currentUser,
-      inputRef,
     }
   }
 })
