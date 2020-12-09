@@ -1,6 +1,6 @@
 <template>
+  <Header :user="currentUser"></Header>
   <div class="container">
-    <Header :user="currentUser"></Header>
     <!-- <column-list :list="list"></column-list> -->
     <router-view></router-view>
     <footer class="text-center py-4 text-secondary bg-light mt-6">
