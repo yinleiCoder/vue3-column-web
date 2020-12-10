@@ -1,8 +1,8 @@
 <template>
   <Header :user="currentUser"></Header>
   <div class="container">
-    <!-- <column-list :list="list"></column-list> -->
     <router-view></router-view>
+    <loader text="玩命加载中" background="rgba(0,0,0,.8)"></loader>
     <footer class="text-center py-4 text-secondary bg-light mt-6">
       <small>
         <ul class="list-inline mb-0">
@@ -23,12 +23,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import {useStore} from 'vuex'
 import Header, { UserProps } from './components/Header.vue'
 import { GlobalDataProps } from './store'
+import Loader from './components/Loader.vue'
 
 
 export default defineComponent({
   name: 'App',
   components: {
     Header,
+    Loader,
   },
   setup() {
     const store = useStore<GlobalDataProps>()

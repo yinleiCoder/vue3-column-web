@@ -72,12 +72,14 @@ interface UserProps {
     columnId: number;
 }
 export interface GlobalDataProps {
+    loading: boolean;
     columns: ColumnProps[];
     posts: PostProps[];
     user: UserProps;
 }
 const store = createStore<GlobalDataProps>({
     state: {
+        loading: false,
         columns: testData,
         posts: testPosts,
         user: {isLogin: true, columnId: 1}
@@ -88,7 +90,15 @@ const store = createStore<GlobalDataProps>({
         },
         createPost(state, newPost) {
             state.posts.push(newPost)
+        },
+        setLoading(state, status) {
+          state.loading = status
         }
+    },
+    actions: {
+      fetchColumns(context) {
+
+      }
     },
     getters: {
         biggerColumnLen(state) {
