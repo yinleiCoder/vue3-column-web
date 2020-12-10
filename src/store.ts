@@ -71,7 +71,13 @@ interface UserProps {
     id?: number;
     columnId: number;
 }
+
+export interface GlobalErrorProps {
+  status: boolean;
+  message?: string; 
+}
 export interface GlobalDataProps {
+    error: GlobalErrorProps;
     loading: boolean;
     columns: ColumnProps[];
     posts: PostProps[];
@@ -79,6 +85,7 @@ export interface GlobalDataProps {
 }
 const store = createStore<GlobalDataProps>({
     state: {
+        error: {status: false},
         loading: false,
         columns: testData,
         posts: testPosts,
@@ -90,6 +97,9 @@ const store = createStore<GlobalDataProps>({
         },
         createPost(state, newPost) {
             state.posts.push(newPost)
+        },
+        setError(state, e: GlobalErrorProps) {
+          state.error = e
         },
         setLoading(state, status) {
           state.loading = status
